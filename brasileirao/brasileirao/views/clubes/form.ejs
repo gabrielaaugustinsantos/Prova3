@@ -1,0 +1,60 @@
+﻿<html>
+  <head>
+    <title>Cadastro de Clubes</title>
+    <meta charset="UTF-8">
+	<link href="/estilos.css" type="text/css" rel="stylesheet">
+	
+	<script language="javascript">
+		function validarInformacoes() {
+			var sigla = document.getElementById('sigla').value;
+			var ano = document.getElementById('ano').value;
+			
+			if (sigla.length > 3) {
+				alert('O campo sigla deve ter no máximo 3 caracteres.');
+				return false;
+			}
+			
+			if (isNaN(ano) == true) {
+				alert('O campo ano deve ter um valor numérico.');
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
+	
+  </head>
+  <body>
+    <h1>Cadastro de Clubes</h1>
+    <hr>
+	
+	<%- include('../menu.html'); %>
+	
+    <form action="/salvarClube" method="post" onsubmit="return validarInformacoes();">
+	  <input type="hidden" name="id" id="id" value="<%= club.id %>"><br>
+	
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" id="nome" value="<%= club.nome %>" size="30"><br>
+
+      <label for="sigla">Sigla:</label>
+      <input type="text" name="sigla" id="sigla" value="<%= club.sigla %>" size="10"><br>
+
+      <label for="ano">Ano de Fundação:</label>
+      <input type="text" name="ano" id="ano" value="<%= club.ano %>" size="10"><br>
+
+      <label for="cidade">Cidade:</label>
+      <input type="text" name="cidade" id="cidade" value="<%= club.cidade %>" size="20"><br>
+
+      <label for="estado">Estado:</label>
+      <select name="estado" id="estado">
+        <option value="">Selecione um estado</option>
+        <option value="PR" <%= (club.estado == "PR" ? "selected":"") %>>Paraná</option>
+        <option value="RS" <%= (club.estado == "RS" ? "selected":"") %>>Rio Grande do Sul</option>
+        <option value="SC" <%= (club.estado == "SC" ? "selected":"") %>>Santa Catarina</option>
+      </select><br>
+
+      <input type="submit" name="acao" value="<%= acao %>">
+      <input type="reset" value="Limpar">
+    </form>
+  </body>
+</html>

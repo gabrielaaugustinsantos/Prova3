@@ -1,0 +1,21 @@
+h1 {
+	font-family: Verdana;
+	font-size: 20pt;
+	color: #FF0000;
+	text-decoration: underline;
+}
+
+a {
+	color: #00FF00;
+}
+
+ul.menu {
+	list-style: none;
+}
+
+ul.menu li {
+	float: left;
+	padding-right: 50px;
+	padding-left: 50px;
+	border-right: 1px solid #000000;
+}

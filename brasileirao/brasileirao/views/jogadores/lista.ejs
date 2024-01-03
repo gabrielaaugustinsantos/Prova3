@@ -1,0 +1,48 @@
+﻿<html>
+  <head>
+    <title>Cadastro de Jogadores</title>
+    <meta charset="UTF-8">
+	<link href="/estilos.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Lista de Jogadores</h1>
+
+	<%- include('../menu.html'); %>
+    
+	<form action="/formJogador" method="post">
+		<input type="submit" name="acao" value="Inserir">&nbsp;
+		<input type="submit" name="acao" value="Atualizar">&nbsp;
+		<input type="submit" name="acao" value="Excluir"><br><br>
+
+		<table border="1" bordercolor="#000000" cellpadding="0" cellspacing="0">
+		  <tr>
+			<th>Seleção</th>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>Data de Nascimento</th>
+			<th>Data do Primeiro Jogo</th>
+			<th>Senha</th>
+			<th>Clube</th>
+		  </tr>
+		  <% jogadores.forEach((jog, index) => { %>
+			   <tr>
+				 <td> 
+					<input type="radio" name="id" id="id" value="<%= jog.id %>">
+				 </td>
+				 <td><%= jog.id %></td>
+				 <td><%= jog.nome %></td>
+				 <td><%= jog.data_nascimento %></td>
+				 <td><%= jog.data_primeiro_jogo %></td>
+				 <td><%= jog.senha %></td>
+				 <td><%= jog.id_clube %></td>
+			   </tr>
+		  <% }) %>
+		</table>
+	</form>
+	
+	<a href="/">Voltar para Página Inicial</a> &nbsp;
+	
+  </body>
+</html>
+
+

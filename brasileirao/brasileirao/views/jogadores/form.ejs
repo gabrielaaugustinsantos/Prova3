@@ -1,0 +1,40 @@
+﻿<html>
+  <head>
+    <title>Cadastro de Jogadores</title>
+    <meta charset="UTF-8">
+    <link href="/estilos.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Cadastro de Jogadores</h1>
+    <hr>
+
+    <%- include('../menu.html'); %>
+    
+    <form action="/salvarJogador" method="post">
+	  <input type="hidden" name="id" id="id" value="<%= jog.id %>"><br>
+	
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" id="nome" value="<%= jog.nome %>" size="30"><br>
+
+      <label for="data">Data de Nascimento:</label>
+      <input type="text" name="data" id="data" value="<%= jog.data_nascimento %>" size="10"><br>
+
+      <label for="senha">Senha:</label>
+      <input type="password" name="senha" id="senha" value="<%= jog.senha %>" size="10"><br>
+
+      <label for="data_jogo">Data do Primeiro Jogo:</label>
+      <input type="text" name="data_jogo" id="data_jogo" value="<%= jog.data_primeiro_jogo %>" size="10"><br>
+
+      <label for="clube">Id do Clube:</label>
+	    <select name="clube" id="clube">
+	    <% clubes.forEach((club, index) => { %>
+        <option value="<%= club.id %>" <%= (club.id == jog.id_clube ? "selected":"") %>><%= club.nome %></option>
+	    <% }) %>
+	    </select><br>
+
+      <input type="submit" name="acao" value="<%= acao %>">
+      <input type="reset" value="Limpar">
+    </form>
+  </body>
+</html>
+
